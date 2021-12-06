@@ -4,6 +4,7 @@ import { db } from '../firebase';
 
 //components
 import { TweetInput } from './TweetInput';
+import { Post } from './Post';
 
 //style
 import styles from './Feed.module.css';
@@ -44,9 +45,23 @@ const Feed: React.FC = () => {
   return (
     <div className={styles.feed}>
       <TweetInput />
-      {posts.map((post) => (
-        <h3>{post.text}</h3>
-      ))}
+      {posts[0]?.id && (
+        <>
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              postId={post.id}
+              avatar={post.avatar}
+              image={post.image}
+              text={post.text}
+              timestamp={post.timestamp}
+              username={post.username}
+            >
+              {post.text}
+            </Post>
+          ))}
+        </>
+      )}
     </div>
   );
 };
