@@ -10,7 +10,7 @@ import AddPhotoIcon from '@material-ui/icons/AddAPhoto';
 //style
 import styles from './TweetInput.module.css';
 
-export const TweetInput = () => {
+export const TweetInput: React.FC = () => {
   const user = useSelector(selectUser);
 
   const [tweetImage, setTweetImage] = useState<File | null>(null);
